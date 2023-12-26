@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="calculate.js">
+    </script>
+</head>    
+
+<title>Tina's website</title>
+
+<body>
+    <label for="number1">Enter first number:</label>
+    <input type="text" id="number1" name="number1"><br>
+
+    <input type="radio" id="add" name="operator" value="1">
+    <label for="add">addition</label><br>
+
+    <input type="radio" id="sub" name="operator" value="2">
+    <label for="sub">subtractioin</label><br>
+
+    <input type="radio" id="mul" name="operator" value="3">
+    <label for="mul">multiplication</label><br>
+
+    <input type="radio" id="div" name="operator" value="4">
+    <label for="div">division</label><br>
+    
+    <label for="number2">Enter second number:</label>
+    <input type="text" id="number2" name="number2"><br>
+
+    <button onclick="cal()">calculate the operation</button><br>
+    <label>The result is: </label>
+    <label id="result"></label>
+<script>
+    function cal(){
+        var success=verify(document.getElementById("number1"));
+        if (success==false){
+            return false;
+        }
+
+        success=verify(document.getElementById("number2"));
+        if (success==false){
+            return false;
+        }
+
+        var n1=parseFloat(document.getElementById("number1").value);
+        var n2=parseFloat(document.getElementById("number2").value);
+
+        var x = document.getElementById("result"); 
+        
+        if (document.getElementById('add').checked) {
+            x.innerHTML = add(n1,n2);
+        }else if (document.getElementById('sub').checked) {
+            x.innerHTML = sub(n1,n2);
+        }else if (document.getElementById('mul').checked) {
+            x.innerHTML = mul(n1,n2);
+        }else if (document.getElementById('div').checked) {
+            var y=div(n1,n2);
+            if (y!==false){
+                x.innerHTML = y;
+            }else{
+                document.getElementById("number2").value="";
+                document.getElementById("number2").focus();
+            }
+            
+        }
+
+    }
+
+</script>
+
+
+</body>
+</html>
+
