@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <script src="calculate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>    
 
 <title>Tina's website</title>
@@ -31,38 +32,38 @@
 <script>
     function cal(){
         var calculator=new Calculator();
-        var success=calculator.verify(document.getElementById("number1"));
+        var success=calculator.verify($("#number1"));
         if (success==false){
             return false;
         }
 
-        success=calculator.verify(document.getElementById("number2"));
+        success=calculator.verify($("#number2"));
         if (success==false){
             return false;
         }
+        
+        var n1=parseFloat($("#number1").val());
+        var n2=parseFloat($("#number2").val());
 
-        var n1=parseFloat(document.getElementById("number1").value);
-        var n2=parseFloat(document.getElementById("number2").value);
-
-        var x = document.getElementById("result"); 
+        var result=null;
         
         if (document.getElementById('add').checked) {
-            x.innerHTML = calculator.add(n1,n2);
+            result=calculator.add(n1,n2);
         }else if (document.getElementById('sub').checked) {
-            x.innerHTML = calculator.sub(n1,n2);
+            result= calculator.sub(n1,n2);
         }else if (document.getElementById('mul').checked) {
-            x.innerHTML = calculator.mul(n1,n2);
+            result=calculator.mul(n1,n2);
         }else if (document.getElementById('div').checked) {
-            var y=calculator.div(n1,n2);
-            if (y!==false){
-                x.innerHTML = y;
-            }else{
-                document.getElementById("number2").value="";
-                document.getElementById("number2").focus();
+            result=calculator.div(n1,n2);
+            
+            if (result==false){
+                $("#number2").val("");
+                $("#number2").focus();
+                return false;
             }
             
         }
-
+        $("#result").text(result);
     }
 
 </script>

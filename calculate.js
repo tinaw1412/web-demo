@@ -16,17 +16,17 @@ class Calculator {
         }
         return n1 / n2;
     }
-    verify(input) {
-        var v = input.value;
+    verify(jElement) {
+        var v = jElement.val();
         if (v == "") {
             alert("please enter number");
-            input.focus();
+            jElement.focus();
             return false;
         }
         if (isNaN(v)) {
             alert("Input is not a number");
-            input.focus();
-            input.value = "";
+            jElement.focus();
+            jElement.val("");
             return false;
         }
         return true;
