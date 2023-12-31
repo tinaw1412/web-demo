@@ -49,6 +49,7 @@
 			}
 		}
 	}
+	
 	$.load=function(){
 		$('.alert_overlay').remove();
 		$._isload =1;
