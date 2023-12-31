@@ -11,7 +11,7 @@ class Calculator {
     }
     div(n1, n2) {
         if (n2 == 0) {
-            alert("divisor cannot be zero");
+            $.alert("divisor cannot be zero");
             return false;
         }
         return n1 / n2;
@@ -19,14 +19,17 @@ class Calculator {
     verify(jElement) {
         var v = jElement.val();
         if (v == "") {
-            alert("please enter number");
+            $.alert("please enter number");
             jElement.focus();
             return false;
         }
         if (isNaN(v)) {
-            alert("Input is not a number");
-            jElement.focus();
-            jElement.val("");
+            $.alert("Input is not a number",
+                function(){
+                    jElement.focus();
+                    jElement.val("");
+                }
+            );
             return false;
         }
         return true;
