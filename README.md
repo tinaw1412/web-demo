@@ -10,3 +10,6 @@ Assume the project's directory ‘’‘web-demo’‘’ is in the root directo
 
 ### then run
 ```docker run -it --rm -d -p 80:80 --name web -v ~/web-demo:/usr/share/nginx/html nginx```
+
+### icon font
+https://ionic.io/ionicons
