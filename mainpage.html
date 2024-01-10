@@ -2,6 +2,8 @@
 <html>
 
 <head>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <style>
     /*不要下划线*/
@@ -72,7 +74,7 @@
     </ul>
     
     <div class="switch_menue">
-      <a href="#" onclick="switch_menue()" id="switch_menue_button"><</a>
+      <a href="#" onclick="switch_menue()" id="switch_menue_button"><ion-icon name="chevron-back-circle-outline"></ion-icon></a>
     </div>
   </div>
 
@@ -93,12 +95,12 @@
       if ($('.left_menu').css('width') == '200px'){
         $('.left_menu').css('width','15px')
         $('.main_content').css('margin-left','15px')
-        $('#switch_menue_button').html('>');
+        $('#switch_menue_button').html('<ion-icon name="chevron-forward-circle-outline"></ion-icon>');
         $('.ul_menu').hide();
       }else{
         $('.left_menu').css('width','200px')
         $('.main_content').css('margin-left','200px')
-        $('#switch_menue_button').html('<');
+        $('#switch_menue_button').html('<ion-icon name="chevron-back-circle-outline"></ion-icon>');
         $('.ul_menu').show();
       }
     }
