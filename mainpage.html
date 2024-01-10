@@ -7,18 +7,34 @@
     /*不要下划线*/
     a{text-decoration:none}
 
+    ul{
+      list-style-type: none;
+    }
+
     body {
       margin: 0;
     }
 
     .left_menu {
-      list-style-type: none;
       margin: 0;
       padding: 0;
       width: 200px;
       position: fixed;
       height: 100%;
       overflow: auto;
+    }
+    .ul_menu{
+      float:left;
+    }
+    .switch_menue{
+      float:right; 
+      margin-top: 20px;
+      background-color: #f1f1f1; 
+      height: 100%;
+    }
+    .main_content {
+      margin-left: 200px;
+      padding: 20px;
     }
 
     li a {
@@ -37,10 +53,6 @@
       color: white;
     }
 
-    .content {
-      margin-left: 200px;
-      padding: 20px;
-    }
 
     iframe {
       width: 100%;
@@ -53,19 +65,18 @@
 <body>
 
   <div class="left_menu"> 
-    <ul style="float:left;" id="menu">
+    <ul class="ul_menu">
       <li><a href="#" onclick="loadPage('home')">Home</a></li>
       <li><a href="#" onclick="loadPage('hello')">Hello world</a></li>
       <li><a href="#" onclick="loadPage('calculator')">Calculator</a></li>
     </ul>
     
-    <div style="float:right; margin-top: 20px;background-color: #f1f1f1; height: 100%;">
+    <div class="switch_menue">
       <a href="#" onclick="switch_menue()" id="switch_menue_button"><</a>
     </div>
-
   </div>
 
-  <div class="content">
+  <div class="main_content">
     <section>
       <iframe id="pageFrame" src="home.html"></iframe>
     </section>
@@ -80,14 +91,14 @@
     function switch_menue(){
       if ($('.left_menu').css('width') == '200px'){
         $('.left_menu').css('width','15px')
-        $('.content').css('margin-left','15px')
+        $('.main_content').css('margin-left','15px')
         $('#switch_menue_button').html('>');
-        $('#menu').hide();
+        $('.ul_menu').hide();
       }else{
         $('.left_menu').css('width','200px')
-        $('.content').css('margin-left','200px')
+        $('.main_content').css('margin-left','200px')
         $('#switch_menue_button').html('<');
-        $('#menu').show();
+        $('.ul_menu').show();
       }
     }
 
