@@ -2,27 +2,51 @@
 <html>
 
 <head>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="js/menu.js"></script>
+
   <style>
+    /*不要下划线*/
+    a{text-decoration:none}
+
+    ul{
+      list-style-type: none;
+    }
+
     body {
       margin: 0;
     }
 
-    ul {
-      list-style-type: none;
+    .left_menu {
       margin: 0;
       padding: 0;
-      width: 25%;
-      background-color: #f1f1f1;
+      width: 200px;
       position: fixed;
       height: 100%;
       overflow: auto;
+     
+    }
+    .ul_menu{
+      float:left;
+    }
+    .switch_menue{
+      float:right;
+      margin-top: 10px;
+      background-color: #bcbcbc; 
+      height: 100%;
+    }
+    .main_content {
+      margin-left: 200px;
+      padding: 20px;
+     
     }
 
     li a {
       display: block;
       color: #000;
       padding: 8px 16px;
-      text-decoration: none;
     }
 
     li a.active {
@@ -35,40 +59,38 @@
       color: white;
     }
 
-    section {
-      margin-left: 25%;
-      padding: 20px;
-    }
 
     iframe {
       width: 100%;
-      height: 600px;
-      /* Set an initial height for the iframe */
+      height: 800px;
       border: none;
     }
   </style>
 </head>
 
 <body>
+  <!--left menu-->
+  <div class="left_menu"> 
+    <ul class="ul_menu">
+      <li><a href="#" onclick="loadPage('home')">Home</a></li>
+      <li><a href="#" onclick="loadPage('hello')">Hello world</a></li>
+      <li><a href="#" onclick="loadPage('calculator')">Calculator</a></li>
+    </ul>
+    
+    <div class="switch_menue">
+      <a href="#" onclick="switch_menue()" id="switch_menue_button">
+        <ion-icon name="chevron-back-circle-outline"></ion-icon>
+      </a>
+    </div>
+  </div>
 
-  <ul>
-    <li><a href="#" onclick="loadPage('home')">Home</a></li>
-    <li><a href="#" onclick="loadPage('hello')">Hello world</a></li>
-    <li><a href="#" onclick="loadPage('calculator')">Calculator</a></li>
-  </ul>
+  <!--main content-->
+  <div class="main_content">
+    <section>
+      <iframe id="pageFrame" src="home.html"></iframe>
+    </section>
+  </div>
 
-  <section id="content">
-    <!-- The content will be dynamically replaced based on the menu click -->
-    <iframe id="pageFrame" src="home.html"></iframe>
-  </section>
-
-  <script>
-    // JavaScript function to load content into the iframe based on the menu click
-    function loadPage(page) {
-      var iframe = document.getElementById('pageFrame');
-      iframe.src = page + '.html';
-    }
-  </script>
 
 </body>
 
