@@ -22,13 +22,13 @@
 		var args=arguments,d;
 		if(args.length){
 			var fn=args[1],_click = function(e){typeof fn=='function'?(fn.call(d,e.data.r)!=!1&&d.close()):d.close()};
-			d = $('<div class="alert_overlay '+($._ismob?'mob':'pc')+'"><div class="alert_msg"><div class="alert_content">'+args[0]+'</div><div class="alert_buttons"><button class="alert_btn alert_btn_cancel">Cancel</button><button class="alert_btn alert_btn_ok">Okey</button></div></div></div>')
+			d = $('<div class="alert_overlay '+($._ismob?'mob':'pc')+'"><div class="alert_msg"><div class="alert_content">'+args[0]+'</div><div class="alert_buttons"><button class="alert_btn alert_btn_cancel">Cancel</button><button class="alert_btn alert_btn_ok">Ok</button></div></div></div>')
 			.on('contextmenu',!1)
 			.on('click','.alert_btn_ok',{r:!0},_click)
 			.on('click','.alert_btn_cancel',{r:!1},_click)
 			$._isload?d.find('.alert_content').css('text-align','center').parent().css({width:'auto',borderRadius:'4px'}).find('.alert_buttons').remove():($._isalert&&d.find('.alert_btn_cancel').remove())
 			d.appendTo('body').find('.alert_btn_ok').focus();//让对话框打开后支持直接键盘回车触发确定按钮点击
-			d.ok =  function(t){d.find('.alert_btn_ok').text(t||'Okey');return d}
+			d.ok =  function(t){d.find('.alert_btn_ok').text(t||'Ok');return d}
 			d.cancel = function(t){d.find('.alert_btn_cancel').text(t||'Cancel');return d}
 			d.content = function(t){t&&d.find('.alert_content').html(t);return d}
 			d.close = function(){d.one('webkitTransitionEnd transitionEnd',function(){d.remove();}).removeClass('alert_show')}
@@ -49,6 +49,7 @@
 			}
 		}
 	}
+	
 	$.load=function(){
 		$('.alert_overlay').remove();
 		$._isload =1;
