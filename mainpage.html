@@ -5,6 +5,8 @@
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="js/menu.js"></script>
+
   <style>
     /*不要下划线*/
     a{text-decoration:none}
@@ -24,19 +26,21 @@
       position: fixed;
       height: 100%;
       overflow: auto;
+     
     }
     .ul_menu{
       float:left;
     }
     .switch_menue{
-      float:right; 
-      margin-top: 20px;
-      background-color: #f1f1f1; 
+      float:right;
+      margin-top: 10px;
+      background-color: #bcbcbc; 
       height: 100%;
     }
     .main_content {
       margin-left: 200px;
       padding: 20px;
+     
     }
 
     li a {
@@ -74,7 +78,9 @@
     </ul>
     
     <div class="switch_menue">
-      <a href="#" onclick="switch_menue()" id="switch_menue_button"><ion-icon name="chevron-back-circle-outline"></ion-icon></a>
+      <a href="#" onclick="switch_menue()" id="switch_menue_button">
+        <ion-icon name="chevron-back-circle-outline"></ion-icon>
+      </a>
     </div>
   </div>
 
@@ -85,27 +91,6 @@
     </section>
   </div>
 
-  <script>
-    function loadPage(page) {
-      var iframe = document.getElementById('pageFrame');
-      iframe.src = page + '.html';
-    }
-
-    function switch_menue(){
-      if ($('.left_menu').css('width') == '200px'){
-        $('.left_menu').css('width','15px')
-        $('.main_content').css('margin-left','15px')
-        $('#switch_menue_button').html('<ion-icon name="chevron-forward-circle-outline"></ion-icon>');
-        $('.ul_menu').hide();
-      }else{
-        $('.left_menu').css('width','200px')
-        $('.main_content').css('margin-left','200px')
-        $('#switch_menue_button').html('<ion-icon name="chevron-back-circle-outline"></ion-icon>');
-        $('.ul_menu').show();
-      }
-    }
-
-  </script>
 
 </body>
 
