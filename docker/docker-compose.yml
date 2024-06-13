@@ -1,25 +1,33 @@
 version: "3.9"
+volumes:
+  mysql_data:
 services:
-   nginx:
-     build: ./nginx/
-     ports:
-       - 80:80
+    nginx:
+      build: ./nginx/
+      ports:
+        - 80:80
   
-     volumes:
-         - ../:/var/www/html/
+      volumes:
+        - ../:/var/www/html/
 
-   php:
-     build: ./php_code/
-     expose:
-       - 9000
-     volumes:
+    php:
+      build: ./php_code/
+      expose:
+        - 9000
+      volumes:
         - ./php_code/:/var/www/html/
 
-
-
-
-
-
+    db:
+      image: mariadb
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: demo_db
+        MYSQL_USER: mysql_user
+        MYSQL_PASSWORD: mysql_user1!
+      volumes:
+        - mysql_data:/var/lib/mysql
+      ports:
+        - "3366:3306"
 
 
 
